@@ -16,9 +16,9 @@ class Id : public Node
   public:
     Id(const char *_id) : id(_id) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "identifier:" << id << endl;
+        cout << string(Indentation, ' ') << "identifier:" << id << endl;
     }
 };
 
@@ -29,9 +29,9 @@ class Number : public Node
   public:
     Number(const char *_repr) : repr(_repr) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "number " << repr << endl;
+        cout << string(Indentation, ' ') << "number " << repr << endl;
     }
 };
 
@@ -42,9 +42,9 @@ class Op : public Node
   public:
     Op(const char *_op) : op(_op) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "operator " << op << endl;
+        cout << string(Indentation, ' ') << "operator " << op << endl;
     }
 };
 
@@ -55,9 +55,9 @@ class String : public Node
   public:
     String(const char *_s) : s(_s) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "string literal " << s << endl;
+        cout << string(Indentation, ' ') << "string literal " << s << endl;
     }
 };
 
@@ -77,11 +77,11 @@ class Multi : public Node
         nodes.push_back(n);
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
         for (typename vector<T *>::reverse_iterator it = nodes.rbegin(); it != nodes.rend(); it++)
         {
-            (*it)->print(indent);
+            (*it)->print(Indentation);
         }
     }
 };
@@ -98,12 +98,12 @@ class CompValue : public Node
   public:
     CompValue(Id *_id, Exp *_exp) : id(_id), exp(_exp) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "member" << endl;
-        id->print(indent + 2);
-        cout << string(indent, ' ') << "value" << endl;
-        ((Node *)exp)->print(indent + 4);
+        cout << string(Indentation, ' ') << "member" << endl;
+        id->print(Indentation + 2);
+        cout << string(Indentation, ' ') << "value" << endl;
+        ((Node *)exp)->print(Indentation + 4);
     }
 };
 
@@ -131,12 +131,12 @@ class ElseIf : public Node
   public:
     ElseIf(Exp *_cond, Multi<Stat> *_then) : cond(_cond), then(_then) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "condition" << endl;
-        cond->print(indent + 2);
-        cout << string(indent, ' ') << "then" << endl;
-        then->print(indent + 2);
+        cout << string(Indentation, ' ') << "condition" << endl;
+        cond->print(Indentation + 2);
+        cout << string(Indentation, ' ') << "then" << endl;
+        then->print(Indentation + 2);
     }
 };
 
@@ -152,18 +152,18 @@ class VarDec : public Node
     {
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "variable declaration" << endl;
-        cout << string(indent + 2, ' ') << "variable names" << endl;
-        ids->print(indent + 4);
+        cout << string(Indentation, ' ') << "variable declaration" << endl;
+        cout << string(Indentation + 2, ' ') << "variable names" << endl;
+        ids->print(Indentation + 4);
         if (type)
         {
-            cout << string(indent + 2, ' ') << "type" << endl;
-            ((Node *)type)->print(indent + 4);
+            cout << string(Indentation + 2, ' ') << "type" << endl;
+            ((Node *)type)->print(Indentation + 4);
         }
-        cout << string(indent + 2, ' ') << "initializer" << endl;
-        exp->print(indent + 4);
+        cout << string(Indentation + 2, ' ') << "initializer" << endl;
+        exp->print(Indentation + 4);
     }
 };
 
@@ -179,12 +179,12 @@ class Component : public Node
   public:
     Component(Id *_id, Type *_type) : id(_id), type(_type) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "component id" << endl;
-        id->print(indent + 2);
-        cout << string(indent, ' ') << "component type" << endl;
-        type->print(indent + 2);
+        cout << string(Indentation, ' ') << "component id" << endl;
+        id->print(Indentation + 2);
+        cout << string(Indentation, ' ') << "component type" << endl;
+        type->print(Indentation + 2);
     }
 };
 
@@ -195,11 +195,11 @@ class TypeDec : public Node
 
   public:
     TypeDec(Id *_id, Type *_type) : id(_id), type(_type) {}
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "type declaration" << endl;
-        id->print(indent + 2);
-        type->print(indent + 2);
+        cout << string(Indentation, ' ') << "type declaration" << endl;
+        id->print(Indentation + 2);
+        type->print(Indentation + 2);
     }
 };
 
@@ -214,12 +214,12 @@ class FPSec : public Node
     {
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "identifiers" << endl;
-        ids->print(indent + 2);
-        cout << string(indent, ' ') << "type" << endl;
-        type_->print(indent + 2);
+        cout << string(Indentation, ' ') << "identifiers" << endl;
+        ids->print(Indentation + 2);
+        cout << string(Indentation, ' ') << "type" << endl;
+        type_->print(Indentation + 2);
     }
 };
 
@@ -295,7 +295,6 @@ class Program : public Node
     void print(int ident)
     {
         cout << string(ident, ' ') << "program" << endl;
-        ;
         body->print(ident + 2);
     }
 };

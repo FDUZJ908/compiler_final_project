@@ -15,11 +15,11 @@ class OfArrayValue : public ArrayValue
   public:
     OfArrayValue(Exp *_left, Exp *_right) : left(_left), right(_right) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        ((Node *)left)->print(indent + 4);
-        cout << string(indent + 2, ' ') << "of" << endl;
-        ((Node *)right)->print(indent + 4);
+        ((Node *)left)->print(Indentation + 4);
+        cout << string(Indentation + 2, ' ') << "of" << endl;
+        ((Node *)right)->print(Indentation + 4);
     }
 };
 
@@ -30,9 +30,9 @@ class SimpleArrayValue : public ArrayValue
   public:
     SimpleArrayValue(Exp *_exp) : exp(_exp) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        ((Node *)exp)->print(indent);
+        ((Node *)exp)->print(Indentation);
     }
 };
 

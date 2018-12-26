@@ -14,9 +14,9 @@ class StrWExp : public WExp
   public:
     StrWExp(String *_s) : s(_s) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        s->print(indent);
+        s->print(Indentation);
     }
 };
 
@@ -27,9 +27,9 @@ class ExpWExp : public WExp
   public:
     ExpWExp(Exp *_exp) : exp(_exp) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        exp->print(indent);
+        exp->print(Indentation);
     }
 };
 

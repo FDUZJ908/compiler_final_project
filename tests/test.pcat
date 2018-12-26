@@ -1,8 +1,0 @@
-PROGRAM IS
-    VAR y : REAL := 3.0;
-    TYPE PAIR IS RECORD FIRST: COMPLEX; SECOND : COMPLEX; END;
-BEGIN 
-    WRITE ("i = ", i, ", j = ", j);
-    WRITE ("x = ", x, ", y = ", y);
-END;
-

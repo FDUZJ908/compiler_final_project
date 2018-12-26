@@ -1,0 +1,76 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:I
+          identifier:J
+        type
+          type: INTEGER
+        initializer
+          number 0
+    statements
+      write statement
+        string literal "Ascending loop:"
+      for statement
+        for variable
+          identifier:I
+        from
+          number 1
+        to
+          number 5
+        for body
+          write statement
+            string literal "I = "
+            id lvalue
+                identifier:I
+      write statement
+        string literal "Descending loop:"
+      for statement
+        for variable
+          identifier:I
+        from
+          number 5
+        to
+          number 1
+        by
+          unary operator expression
+            operator -
+            number 1
+        for body
+          write statement
+            string literal "I = "
+            id lvalue
+                identifier:I
+      write statement
+        string literal "Double loop:"
+      for statement
+        for variable
+          identifier:I
+        from
+          number 1
+        to
+          number 5
+        for body
+          for statement
+            for variable
+              identifier:J
+            from
+              id lvalue
+                  identifier:I
+            to
+              binary operator expression
+                  id lvalue
+                      identifier:I
+                operator +
+                  number 10
+            by
+              number 2
+            for body
+              write statement
+                string literal "I,J = "
+                id lvalue
+                    identifier:I
+                string literal ", "
+                id lvalue
+                    identifier:J

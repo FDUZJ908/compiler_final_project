@@ -1,0 +1,42 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:i
+          identifier:j
+        type
+          type: INTEGER
+        initializer
+          number error! overflow 5:42
+      variable declaration
+        variable names
+          identifier:x
+        type
+          type: REAL
+        initializer
+          number 2.0
+      variable declaration
+        variable names
+          identifier:y
+        type
+          type: REAL
+        initializer
+          number 3.0
+    statements
+      write statement
+        string literal "i = "
+        id lvalue
+            identifier:i
+        string literal ", j = "
+        id lvalue
+            identifier:j
+      write statement
+        string literal "x = "
+        id lvalue
+            identifier:x
+        string literal ", y = "
+        id lvalue
+            identifier:y
+      write statement
+        string literal error! overflow 11:12

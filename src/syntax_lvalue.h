@@ -15,10 +15,10 @@ class IdLvalue : public Lvalue
   public:
     IdLvalue(Id *_id) : id(_id) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "id lvalue" << endl;
-        id->print(indent + 4);
+        cout << string(Indentation, ' ') << "id lvalue" << endl;
+        id->print(Indentation + 4);
     }
 };
 
@@ -30,13 +30,13 @@ class ArrayLvalue : public Lvalue
   public:
     ArrayLvalue(Lvalue *_lval, Exp *_exp) : lval(_lval), exp(_exp) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "array lvalue" << endl;
-        cout << string(indent + 2, ' ') << "array" << endl;
-        lval->print(indent + 4);
-        cout << string(indent + 2, ' ') << "index" << endl;
-        ((Node *)exp)->print(indent + 4);
+        cout << string(Indentation, ' ') << "array lvalue" << endl;
+        cout << string(Indentation + 2, ' ') << "array" << endl;
+        lval->print(Indentation + 4);
+        cout << string(Indentation + 2, ' ') << "index" << endl;
+        ((Node *)exp)->print(Indentation + 4);
     }
 };
 
@@ -48,13 +48,13 @@ class RecordLvalue : public Lvalue
   public:
     RecordLvalue(Lvalue *_lval, Id *_id) : lval(_lval), id(_id) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "record lvalue" << endl;
-        cout << string(indent + 2, ' ') << "record" << endl;
-        lval->print(indent + 4);
-        cout << string(indent + 2, ' ') << "member" << endl;
-        id->print(indent + 4);
+        cout << string(Indentation, ' ') << "record lvalue" << endl;
+        cout << string(Indentation + 2, ' ') << "record" << endl;
+        lval->print(Indentation + 4);
+        cout << string(Indentation + 2, ' ') << "member" << endl;
+        id->print(Indentation + 4);
     }
 };
 

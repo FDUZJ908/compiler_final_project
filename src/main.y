@@ -76,8 +76,7 @@ varDecBlock: varDec varDecBlock
   Multi<VarDec>* v = new Multi<VarDec>();
   v->add((VarDec*)$1);
   $$ = v;
-}
-;
+};
 
 typeDecBlock: typeDec typeDecBlock 
 {
@@ -89,8 +88,7 @@ typeDecBlock: typeDec typeDecBlock
   Multi<TypeDec>* v = new Multi<TypeDec>();
   v->add((TypeDec*)$1);
   $$ = v;
-}
-;
+};
 
 procDecBlock: procDec procDecBlock 
 {
@@ -102,8 +100,7 @@ procDecBlock: procDec procDecBlock
   Multi<ProcDec>* v = new Multi<ProcDec>();
   v->add((ProcDec*)$1);
   $$ = v;
-}
-;
+};
 
 varDec: idBlock typeOpt ":=" exp ";" 
 {
@@ -120,8 +117,7 @@ idBlock: IDENTIFIER "," idBlock
   Multi<Id>* v = new Multi<Id>();
   v->add((Id*)$1);
   $$ = v;
-}
-;
+};
 
 typeOpt: ":" type 
 {
@@ -132,8 +128,7 @@ typeOpt: ":" type
 typeDec: IDENTIFIER "IS" type ";" 
 {
   $$ = new TypeDec((Id*)$1, (Type*)$3);
-}
-;
+};
 
 procDec: IDENTIFIER formalParams typeOpt "IS" body ";" 
 {
@@ -155,8 +150,7 @@ type: IDENTIFIER
 | "RECORD" componentBlock "END"
 {
   $$ = new RecordType((Multi<Component>*)$2);
-}
-;
+};
 
 componentBlock: component componentBlock 
 {
@@ -168,21 +162,18 @@ componentBlock: component componentBlock
   Multi<Component>* v = new Multi<Component>();
   v->add((Component*)$1);
   $$ = v;
-}
-;
+};
 
 component: IDENTIFIER ":" type ";"
 {
   $$ = new Component((Id*)$1, (Type*)$3);
-}
-;
+};
 
 formalParams: "(" fpSectionBlock ")"  { $$ = $2; } 
 | "(" ")"
 {
   $$ = NULL;
-}
-;
+};
 
 fpSectionBlock: fp_section ";" fpSectionBlock 
 {
@@ -194,8 +185,7 @@ fpSectionBlock: fp_section ";" fpSectionBlock
   Multi<FPSec>* v = new Multi<FPSec>;
   v->add((FPSec*)$1);
   $$ = v;
-}
-;
+};
 
 fp_section: idBlock ":" type
 {
@@ -269,14 +259,12 @@ elseIfBlock: "ELSIF" exp "THEN" statementBlock elseIfBlock
 |
 {
   $$ = new Multi<ElseIf>();
-}
-;
+};
 elseOpt: "ELSE" statementBlock 
 {
   { $$ = $2; }
 }
-| { $$ = NULL;  } 
-;
+| { $$ = NULL;  } ;
 
 lvalueBlock: lvalue "," lvalueBlock 
 {
@@ -289,8 +277,7 @@ lvalueBlock: lvalue "," lvalueBlock
   Multi<Lvalue>* v = new Multi<Lvalue>();
   v->add((Lvalue*)$1);
   $$ = $1;
-}
-;
+};
 
 wParams:  "(" wExpBlock ")" 
 {
@@ -299,8 +286,7 @@ wParams:  "(" wExpBlock ")"
 | "(" ")"
 {
   $$ = NULL;
-}
-;
+};
 wExpBlock: wExp "," wExpBlock 
 {
   Multi<WExp>* v = (Multi<WExp>*)$3;
@@ -312,8 +298,7 @@ wExpBlock: wExp "," wExpBlock
   Multi<WExp>* v = new Multi<WExp>();
   v->add((WExp*)$1);
   $$ = v;
-}
-;
+};
 
 wExp: STRING 
 {
@@ -322,8 +307,7 @@ wExp: STRING
 | exp 
 {
   $$ = new ExpWExp((Exp*)$1);
-}
-;
+};
 
 exp: number { $$ = $1; }| 
 lvalue { $$ = new LvalueExp((Lvalue*)$1); }| 
@@ -345,8 +329,7 @@ expBlock: exp "," expBlock
   Multi<Exp>* v = new Multi<Exp>();
   v->add((Exp*)$1);
   $$ = v;
-}
-;
+};
 expOpt: exp { $$=$1; }| {$$=NULL;};
 
 lvalue: IDENTIFIER { $$ = new IdLvalue((Id*)$1); } |
@@ -368,8 +351,7 @@ compValueBlock: IDENTIFIER ":=" exp ";" compValueBlock
    Multi<CompValue>* v = new Multi<CompValue>();
    v->add(new CompValue((Id*)$1, (Exp*)$3));
    $$ = v;
-}
-;
+};
 
 arrayValues: "[<" arrayValueBlock ">]" { $$ = $2; };
 
@@ -384,8 +366,7 @@ arrayValueBlock: arrayValue "," arrayValueBlock
   Multi<ArrayValue>* v = new Multi<ArrayValue>();
   v->add((ArrayValue*)$1);
   $$ = v;
-}
-;
+};
 
 arrayValue: exp "OF" exp 
 { $$ = new OfArrayValue((Exp*)$1, (Exp*)$3); }
@@ -400,8 +381,7 @@ binaryOp: OPERATOR { $$ = $1; }
 | "DIV" { $$ = new Op("DIV"); }
 | "MOD" { $$ = new Op("MOD"); } 
 | "OR"  { $$ = new Op("OR"); }
-| "AND" { $$ = new Op("AND"); }
-;
+| "AND" { $$ = new Op("AND"); };
 
 
 %%
@@ -425,9 +405,10 @@ int main(int argc, char** argv) {
 }
 
 void yyerror(const char *s) {
-	cout << "EEK, parse error! Position: " << row << ":" << col 
-         << " token: " << yytext 
-         << "  Message: " << s << endl;
+	cout  << "Error!" << endl
+        << "Position: " << row << ":" << col << endl
+        << "token: " << yytext << endl
+        << "Message: " << s << endl;
 	exit(-1);
 }
 

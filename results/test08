@@ -1,0 +1,66 @@
+program
+  body
+    declarations
+      procedure declaration
+        id
+          identifier:FOO
+        formal parameters
+          identifiers
+            identifier:X
+          type
+            user defined type: 
+              identifier:INT
+          identifiers
+            identifier:Y
+          type
+            type: REAL
+        return type
+          type: REAL
+          body
+            declarations
+              procedure declaration
+                id
+                  identifier:BAR
+                  body
+                    declarations
+                    statements
+                      assignment statement
+                        id lvalue
+                            identifier:Y
+                        value
+                          binary operator expression
+                              id lvalue
+                                  identifier:X
+                            operator +
+                              number 1.0
+            statements
+              function call statement
+                function name
+                  identifier:BAR
+                no parameter
+              return value
+                  id lvalue
+                      identifier:Y
+      variable declaration
+        variable names
+          identifier:C
+        type
+          type: REAL
+        initializer
+          number 0
+    statements
+      assignment statement
+        id lvalue
+            identifier:C
+        value
+          function call
+            function id
+              identifier:FOO
+            parameters
+              number 3
+              number 2.0
+      write statement
+        string literal "C = "
+        id lvalue
+            identifier:C
+        string literal " (should be 4.0)"

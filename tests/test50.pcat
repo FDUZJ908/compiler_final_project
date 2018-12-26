@@ -1,0 +1,12 @@
+(* test50:               *)
+(*   test error.         *)
+(*                       *)
+PROGRAM IS
+    VAR i, j : INTEGER := 214748364899999; 
+    VAR x : REAL := 2.0;
+    VAR y : REAL := 3.0;
+BEGIN 
+    WRITE ("i = ", i, ", j = ", j);
+    WRITE ("x = ", x, ", y = ", y);
+    WRITE ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+END;

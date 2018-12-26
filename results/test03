@@ -1,0 +1,109 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:A
+          identifier:B
+        type
+          type: REAL
+        initializer
+          number 0.0
+      variable declaration
+        variable names
+          identifier:I
+          identifier:J
+        type
+          type: INTEGER
+        initializer
+          number 0
+    statements
+      assignment statement
+        id lvalue
+            identifier:A
+        value
+          number 5.0
+      assignment statement
+        id lvalue
+            identifier:I
+        value
+          unary operator expression
+            operator -
+            number 3
+      assignment statement
+        id lvalue
+            identifier:J
+        value
+          binary operator expression
+              id lvalue
+                  identifier:I
+            operator *
+              number 10
+      assignment statement
+        id lvalue
+            identifier:B
+        value
+          binary operator expression
+              id lvalue
+                  identifier:A
+            operator +
+              id lvalue
+                  identifier:I
+      assignment statement
+        id lvalue
+            identifier:A
+        value
+          binary operator expression
+              id lvalue
+                  identifier:J
+            operator /
+              id lvalue
+                  identifier:B
+      assignment statement
+        id lvalue
+            identifier:J
+        value
+          binary operator expression
+              id lvalue
+                  identifier:I
+            operator -
+              id lvalue
+                  identifier:J
+      assignment statement
+        id lvalue
+            identifier:I
+        value
+          binary operator expression
+              id lvalue
+                  identifier:J
+            operator /
+              id lvalue
+                  identifier:I
+      assignment statement
+        id lvalue
+            identifier:B
+        value
+          binary operator expression
+              id lvalue
+                  identifier:I
+            operator -
+              id lvalue
+                  identifier:B
+      write statement
+        string literal " A = "
+        unary operator expression
+          operator -
+          id lvalue
+              identifier:A
+        string literal " | B = "
+        id lvalue
+            identifier:B
+      write statement
+        string literal ""
+      write statement
+        string literal " I = "
+        id lvalue
+            identifier:I
+        string literal " |  J = "
+        id lvalue
+            identifier:J

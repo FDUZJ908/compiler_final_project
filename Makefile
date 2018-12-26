@@ -1,31 +1,15 @@
-GCC = @g++
-LEX = @flex
-YACC = @bison
-MKDIR_P = mkdir -p
-BUILD_DIR = build
-BIN_DIR = build/bin
-MAINCC = build/main.cc
-MAINY = src/main.y
-TOKENIZERL = src/tokenizer.l
-TOKENIZERCC = build/tokenizer.cc
-DEFINES = build/main.tab.h
-MAINBIN = build/bin/main
-CFLAG = -I "src"
 
-main: $(BUILD_DIR) $(BIN_DIR) $(MAINCC) $(TOKENIZERCC) src/syntax.h
-	$(GCC) -g $(MAINCC) $(TOKENIZERCC) -lfl -o $(MAINBIN) $(CFLAG)
+main: build/bin build/main.cc build/tokenizer.cc src/syntax.h
+	@g++ -g build/main.cc build/tokenizer.cc -lfl -o build/bin/main -I "src"
 
-$(BUILD_DIR): 
-	$(MKDIR_P) $(BUILD_DIR)
+build/bin:
+	mkdir -p build/bin
 
-$(BIN_DIR):
-	$(MKDIR_P) $(BIN_DIR)
+build/main.cc: src/main.y 
+	@bison src/main.y -o build/main.cc --defines=build/main.tab.h
 
-$(MAINCC): $(MAINY) 
-	$(YACC) $(MAINY) -o $(MAINCC) --defines=$(DEFINES)
-
-$(TOKENIZERCC): $(MAINCC) $(TOKENIZERL) 
-	$(LEX) -o $(TOKENIZERCC) $(TOKENIZERL)
+build/tokenizer.cc: build/main.cc src/tokenizer.l 
+	@flex -o build/tokenizer.cc src/tokenizer.l
 
 
 

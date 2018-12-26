@@ -18,12 +18,12 @@ class AssignStat : public Stat
     {
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "assignment statement" << endl;
-        lvalue->print(indent + 2);
-        cout << string(indent + 2, ' ') << "value" << endl;
-        exp->print(indent + 4);
+        cout << string(Indentation, ' ') << "assignment statement" << endl;
+        lvalue->print(Indentation + 2);
+        cout << string(Indentation + 2, ' ') << "value" << endl;
+        exp->print(Indentation + 4);
     }
 };
 
@@ -35,19 +35,19 @@ class CallStat : public Stat
   public:
     CallStat(Id *_id, Multi<Exp> *_params) : id(_id), params(_params) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "function call statement" << endl;
-        cout << string(indent + 2, ' ') << "function name" << endl;
-        id->print(indent + 4);
+        cout << string(Indentation, ' ') << "function call statement" << endl;
+        cout << string(Indentation + 2, ' ') << "function name" << endl;
+        id->print(Indentation + 4);
         if (params)
         {
-            cout << string(indent + 2, ' ') << "parameters" << endl;
-            params->print(indent + 4);
+            cout << string(Indentation + 2, ' ') << "parameters" << endl;
+            params->print(Indentation + 4);
         }
         else
         {
-            cout << string(indent + 2, ' ') << "no parameter" << endl;
+            cout << string(Indentation + 2, ' ') << "no parameter" << endl;
         }
     }
 };
@@ -59,10 +59,10 @@ class RStat : public Stat
   public:
     RStat(Multi<Lvalue> *_lvalues) : lvalues(_lvalues) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "read statement" << endl;
-        lvalues->print(indent + 2);
+        cout << string(Indentation, ' ') << "read statement" << endl;
+        lvalues->print(Indentation + 2);
     }
 };
 
@@ -73,10 +73,10 @@ class WStat : public Stat
   public:
     WStat(Multi<WExp> *_w_params) : wParams(_w_params) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "write statement" << endl;
-        wParams->print(indent + 2);
+        cout << string(Indentation, ' ') << "write statement" << endl;
+        wParams->print(Indentation + 2);
     }
 };
 
@@ -93,22 +93,22 @@ class IfStat : public Stat
     {
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "if statement" << endl;
-        cout << string(indent + 2, ' ') << "condition" << endl;
-        cond->print(indent + 4);
-        cout << string(indent + 2, ' ') << "then" << endl;
-        then->print(indent + 4);
+        cout << string(Indentation, ' ') << "if statement" << endl;
+        cout << string(Indentation + 2, ' ') << "condition" << endl;
+        cond->print(Indentation + 4);
+        cout << string(Indentation + 2, ' ') << "then" << endl;
+        then->print(Indentation + 4);
         if (elseif && !elseif->empty())
         {
-            cout << string(indent + 2, ' ') << "elseif" << endl;
-            elseif->print(indent + 4);
+            cout << string(Indentation + 2, ' ') << "elseif" << endl;
+            elseif->print(Indentation + 4);
         }
         if (else_)
         {
-            cout << string(indent + 2, ' ') << "else" << endl;
-            else_->print(indent + 4);
+            cout << string(Indentation + 2, ' ') << "else" << endl;
+            else_->print(Indentation + 4);
         }
     }
 };
@@ -120,10 +120,10 @@ class LoopStat : public Stat
   public:
     LoopStat(Multi<Stat> *_body) : body(_body) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "loop" << endl;
-        body->print(indent + 2);
+        cout << string(Indentation, ' ') << "loop" << endl;
+        body->print(Indentation + 2);
     }
 };
 
@@ -135,13 +135,13 @@ class WhileStat : public Stat
   public:
     WhileStat(Exp *_cond, Multi<Stat> *_body) : cond(_cond), body(_body){};
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "while loop" << endl;
-        cout << string(indent + 2, ' ') << "condition expression" << endl;
-        cond->print(indent + 4);
-        cout << string(indent + 2, ' ') << "body" << endl;
-        body->print(indent + 4);
+        cout << string(Indentation, ' ') << "while loop" << endl;
+        cout << string(Indentation + 2, ' ') << "condition expression" << endl;
+        cond->print(Indentation + 4);
+        cout << string(Indentation + 2, ' ') << "body" << endl;
+        body->print(Indentation + 4);
     }
 };
 
@@ -159,27 +159,27 @@ class ForStat : public Stat
     {
     }
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "for statement" << endl;
+        cout << string(Indentation, ' ') << "for statement" << endl;
 
-        cout << string(indent + 2, ' ') << "for variable" << endl;
-        id->print(indent + 4);
+        cout << string(Indentation + 2, ' ') << "for variable" << endl;
+        id->print(Indentation + 4);
 
-        cout << string(indent + 2, ' ') << "from" << endl;
-        from->print(indent + 4);
+        cout << string(Indentation + 2, ' ') << "from" << endl;
+        from->print(Indentation + 4);
 
-        cout << string(indent + 2, ' ') << "to" << endl;
-        to->print(indent + 4);
+        cout << string(Indentation + 2, ' ') << "to" << endl;
+        to->print(Indentation + 4);
 
         if (by)
         {
-            cout << string(indent + 2, ' ') << "by" << endl;
-            by->print(indent + 4);
+            cout << string(Indentation + 2, ' ') << "by" << endl;
+            by->print(Indentation + 4);
         }
 
-        cout << string(indent + 2, ' ') << "for body" << endl;
-        body->print(indent + 4);
+        cout << string(Indentation + 2, ' ') << "for body" << endl;
+        body->print(Indentation + 4);
     }
 };
 
@@ -189,16 +189,16 @@ class ReturnStat : public Stat
 
   public:
     ReturnStat(Exp *_val) : val(_val) {}
-    void print(int indent)
+    void print(int Indentation)
     {
         if (val)
         {
-            cout << string(indent, ' ') << "return value" << endl;
-            val->print(indent + 4);
+            cout << string(Indentation, ' ') << "return value" << endl;
+            val->print(Indentation + 4);
         }
         else
         {
-            cout << string(indent, ' ') << "return statement" << endl;
+            cout << string(Indentation, ' ') << "return statement" << endl;
         }
     }
 };
@@ -206,9 +206,9 @@ class ReturnStat : public Stat
 class ExitStat : public Stat
 {
   public:
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "exit statement" << endl;
+        cout << string(Indentation, ' ') << "exit statement" << endl;
     }
 };
 

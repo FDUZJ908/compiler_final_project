@@ -15,10 +15,10 @@ class UserType : public Type
   public:
     UserType(Id *_id) : id(_id) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "user defined type: " << endl;
-        id->print(indent + 2);
+        cout << string(Indentation, ' ') << "user defined type: " << endl;
+        id->print(Indentation + 2);
     }
 };
 
@@ -29,9 +29,9 @@ class BuiltinType : public Type
   public:
     BuiltinType(string _typename) : typename_(_typename) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "type: " << typename_ << endl;
+        cout << string(Indentation, ' ') << "type: " << typename_ << endl;
     }
 };
 
@@ -42,10 +42,10 @@ class ArrayType : public Type
   public:
     ArrayType(Type *_elem_type) : elem_type(_elem_type) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "array type of" << endl;
-        elem_type->print(indent + 2);
+        cout << string(Indentation, ' ') << "array type of" << endl;
+        elem_type->print(Indentation + 2);
     }
 };
 
@@ -56,10 +56,10 @@ class RecordType : public Type
   public:
     RecordType(Multi<Component> *_components) : components(_components) {}
 
-    void print(int indent)
+    void print(int Indentation)
     {
-        cout << string(indent, ' ') << "record type" << endl;
-        components->print(indent + 2);
+        cout << string(Indentation, ' ') << "record type" << endl;
+        components->print(Indentation + 2);
     }
 };
 

@@ -1,0 +1,145 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:I
+          identifier:ANSWER
+        type
+          type: INTEGER
+        initializer
+          number 0
+      procedure declaration
+        id
+          identifier:FACTORIAL
+          body
+            declarations
+              variable declaration
+                variable names
+                  identifier:J
+                type
+                  type: INTEGER
+                initializer
+                  number 0
+              procedure declaration
+                id
+                  identifier:FACT
+                  body
+                    declarations
+                    statements
+                      if statement
+                        condition
+                          binary operator expression
+                              id lvalue
+                                  identifier:J
+                            operator <=
+                              id lvalue
+                                  identifier:I
+                        then
+                          function call statement
+                            function name
+                              identifier:MULT
+                            no parameter
+                          assignment statement
+                            id lvalue
+                                identifier:J
+                            value
+                              binary operator expression
+                                  id lvalue
+                                      identifier:J
+                                operator +
+                                  number 1
+                          function call statement
+                            function name
+                              identifier:FACT
+                            no parameter
+                        else
+              procedure declaration
+                id
+                  identifier:MULT
+                  body
+                    declarations
+                      variable declaration
+                        variable names
+                          identifier:I
+                        type
+                          type: INTEGER
+                        initializer
+                          number 0
+                    statements
+                      assignment statement
+                        id lvalue
+                            identifier:I
+                        value
+                          id lvalue
+                              identifier:ANSWER
+                      assignment statement
+                        id lvalue
+                            identifier:I
+                        value
+                          binary operator expression
+                              id lvalue
+                                  identifier:I
+                            operator *
+                              id lvalue
+                                  identifier:J
+                      assignment statement
+                        id lvalue
+                            identifier:ANSWER
+                        value
+                          id lvalue
+                              identifier:I
+            statements
+              assignment statement
+                id lvalue
+                    identifier:ANSWER
+                value
+                  number 1
+              assignment statement
+                id lvalue
+                    identifier:J
+                value
+                  number 1
+              function call statement
+                function name
+                  identifier:FACT
+                no parameter
+    statements
+      write statement
+        string literal "The first 5 factorials are (in ascending order):"
+      assignment statement
+        id lvalue
+            identifier:I
+        value
+          number 1
+      loop
+        if statement
+          condition
+            binary operator expression
+                id lvalue
+                    identifier:I
+              operator >
+                number 5
+          then
+            exit statement
+          else
+        function call statement
+          function name
+            identifier:FACTORIAL
+          no parameter
+        write statement
+          string literal "FACTORIAL("
+          id lvalue
+              identifier:I
+          string literal ") = "
+          id lvalue
+              identifier:ANSWER
+        assignment statement
+          id lvalue
+              identifier:I
+          value
+            binary operator expression
+                id lvalue
+                    identifier:I
+              operator +
+                number 1

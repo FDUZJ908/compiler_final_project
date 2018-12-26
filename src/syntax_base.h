@@ -3,7 +3,7 @@
 
 class Node {
 public:
-    virtual void print(int indent) = 0;
+    virtual void print(int Indentation) = 0;
 };
 
 class Body;

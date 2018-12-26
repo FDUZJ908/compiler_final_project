@@ -1,0 +1,286 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:I
+        type
+          type: INTEGER
+        initializer
+          number 0
+      type declaration
+        identifier:COMPLEX
+        record type
+          component id
+            identifier:R
+          component type
+            type: REAL
+          component id
+            identifier:I
+          component type
+            type: REAL
+      type declaration
+        identifier:PAIR
+        record type
+          component id
+            identifier:FIRST
+          component type
+            user defined type: 
+              identifier:COMPLEX
+          component id
+            identifier:SECOND
+          component type
+            user defined type: 
+              identifier:COMPLEX
+      variable declaration
+        variable names
+          identifier:C
+        type
+          user defined type: 
+            identifier:COMPLEX
+        initializer
+          record expression
+            record id
+              identifier:COMPLEX
+            values
+              member
+                identifier:R
+              value
+                  number 0.0
+              member
+                identifier:I
+              value
+                  number 0.0
+      variable declaration
+        variable names
+          identifier:P
+        type
+          user defined type: 
+            identifier:PAIR
+        initializer
+          record expression
+            record id
+              identifier:PAIR
+            values
+              member
+                identifier:FIRST
+              value
+                  record expression
+                    record id
+                      identifier:COMPLEX
+                    values
+                      member
+                        identifier:R
+                      value
+                          number 0.0
+                      member
+                        identifier:I
+                      value
+                          number 0.0
+              member
+                identifier:SECOND
+              value
+                  record expression
+                    record id
+                      identifier:COMPLEX
+                    values
+                      member
+                        identifier:R
+                      value
+                          number 0.0
+                      member
+                        identifier:I
+                      value
+                          number 0.0
+      procedure declaration
+        id
+          identifier:PRINT
+          body
+            declarations
+            statements
+              write statement
+                string literal "    ("
+                record lvalue
+                  record
+                    id lvalue
+                        identifier:C
+                  member
+                    identifier:R
+                string literal ", "
+                record lvalue
+                  record
+                    id lvalue
+                        identifier:C
+                  member
+                    identifier:I
+                string literal ")"
+    statements
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:C
+          member
+            identifier:R
+        value
+          number 1.0
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:C
+          member
+            identifier:I
+        value
+          number 0.0
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:P
+          member
+            identifier:FIRST
+        value
+          id lvalue
+              identifier:C
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:C
+          member
+            identifier:R
+        value
+          number 0.0
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:C
+          member
+            identifier:I
+        value
+          number 1.0
+      assignment statement
+        record lvalue
+          record
+            id lvalue
+                identifier:P
+          member
+            identifier:SECOND
+        value
+          id lvalue
+              identifier:C
+      assignment statement
+        id lvalue
+            identifier:C
+        value
+          record lvalue
+            record
+              id lvalue
+                  identifier:P
+            member
+              identifier:FIRST
+      write statement
+        string literal "The first complex number should be (1.0, 0.0):"
+      function call statement
+        function name
+          identifier:PRINT
+        no parameter
+      assignment statement
+        id lvalue
+            identifier:C
+        value
+          record lvalue
+            record
+              id lvalue
+                  identifier:P
+            member
+              identifier:SECOND
+      write statement
+        string literal "The second complex number should be (0.0, 1.0):"
+      function call statement
+        function name
+          identifier:PRINT
+        no parameter
+      if statement
+        condition
+          binary operator expression
+              record lvalue
+                record
+                  record lvalue
+                    record
+                      id lvalue
+                          identifier:P
+                    member
+                      identifier:FIRST
+                member
+                  identifier:R
+            operator <>
+              record lvalue
+                record
+                  record lvalue
+                    record
+                      id lvalue
+                          identifier:P
+                    member
+                      identifier:SECOND
+                member
+                  identifier:R
+        then
+          write statement
+            string literal "and these two complex numbers are not equal!"
+        elseif
+          condition
+            binary operator expression
+                record lvalue
+                  record
+                    record lvalue
+                      record
+                        id lvalue
+                            identifier:P
+                      member
+                        identifier:FIRST
+                  member
+                    identifier:I
+              operator <>
+                record lvalue
+                  record
+                    record lvalue
+                      record
+                        id lvalue
+                            identifier:P
+                      member
+                        identifier:SECOND
+                  member
+                    identifier:I
+          then
+            write statement
+              string literal "and these two complex numbers are not equal!"
+        else
+          condition
+            binary operator expression
+                record lvalue
+                  record
+                    record lvalue
+                      record
+                        id lvalue
+                            identifier:P
+                      member
+                        identifier:FIRST
+                  member
+                    identifier:I
+              operator <>
+                record lvalue
+                  record
+                    record lvalue
+                      record
+                        id lvalue
+                            identifier:P
+                      member
+                        identifier:SECOND
+                  member
+                    identifier:I
+          then
+            write statement
+              string literal "and these two complex numbers are not equal!"

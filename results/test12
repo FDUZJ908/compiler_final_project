@@ -1,0 +1,52 @@
+program
+  body
+    declarations
+      variable declaration
+        variable names
+          identifier:I
+        type
+          type: INTEGER
+        initializer
+          number 0
+      procedure declaration
+        id
+          identifier:ADDONE
+          body
+            declarations
+            statements
+              assignment statement
+                id lvalue
+                    identifier:I
+                value
+                  binary operator expression
+                      id lvalue
+                          identifier:I
+                    operator +
+                      number 1
+      procedure declaration
+        id
+          identifier:PASSTHEBUCK
+          body
+            declarations
+            statements
+              function call statement
+                function name
+                  identifier:ADDONE
+                no parameter
+    statements
+      write statement
+        string literal "I = "
+        id lvalue
+            identifier:I
+        string literal " (SHOULD BE 0)"
+      function call statement
+        function name
+          identifier:PASSTHEBUCK
+        no parameter
+      write statement
+        string literal "I = "
+        id lvalue
+            identifier:I
+        string literal " (SHOULD BE 1)"
+      write statement
+        string literal "ALL DONE!"
