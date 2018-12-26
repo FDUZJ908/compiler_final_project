@@ -1,0 +1,6 @@
+#include "syntax_arrayvalue.h"
+#include "syntax_expression.h"
+#include "syntax_lvalue.h"
+#include "syntax_stat.h"
+#include "syntax_type.h"
+#include "syntax_wexpression.h"
